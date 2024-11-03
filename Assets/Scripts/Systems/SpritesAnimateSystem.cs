@@ -8,6 +8,7 @@ namespace Systems
     public partial struct SpritesAnimateSystem : ISystem
     {
         private EntityQuery _query;
+
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
@@ -50,7 +51,6 @@ namespace Systems
                 {
                     spriteElapsedTime.Value = 0f; // Reset elapsed time
                     spriteIndex.Value = (spriteIndex.Value + 1) % spriteSheetInfo.Length; // Cập nhật chỉ số sprite
-                    Debug.Log(spriteIndex.Value);
                 }
             }
         }
