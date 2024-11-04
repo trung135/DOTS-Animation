@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d24ea5069c439e8e03596e90e001f1, type: 3}
   m_Name: Player_Idle
   m_EditorClassIdentifier: 
-  id: 1
-  Sheets:
-  - ID: 1
-    Name: Idle
-    Sprites:
+  _id: 0
+  _sheets:
+  - _id: 0
+    _name: Idle
+    _sprites:
     - {fileID: 1929685790754269422, guid: f974413a323356c40abe755231fc2ea8, type: 3}
     - {fileID: 2931193996015454922, guid: f974413a323356c40abe755231fc2ea8, type: 3}
     - {fileID: 1947064159355796430, guid: f974413a323356c40abe755231fc2ea8, type: 3}
