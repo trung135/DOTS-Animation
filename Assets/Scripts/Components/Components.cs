@@ -1,9 +1,12 @@
 using Unity.Entities;
+using Unity.Mathematics;
 
-namespace Clover.Components
+public struct PlayerData : IComponentData
 {
-    public struct Components : IComponentData
-    {
-        
-    }
+    public float speed;
+}
+
+public struct InputData : IComponentData
+{
+    public float2 move;
 }
