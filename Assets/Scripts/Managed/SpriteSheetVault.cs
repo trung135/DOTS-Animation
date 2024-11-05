@@ -11,18 +11,22 @@ public class SpriteSheetVault : MonoBehaviour
         {
             if (!spriteSheet) continue;
 
-            var animationID = spriteSheet.AnimationID;
-            var animationName = spriteSheet.Animation;
-            var directions = spriteSheet.DirectionArray.Span;
-
-            foreach (var direction in directions)
+            var sheetId = spriteSheet.Id;
+            var animations = spriteSheet.AnimationArray.Span;
+            foreach (var anim in animations)
             {
-                var directionID = direction.DirectionID;
-                var directionName = direction.DirectionName;
-                
-                if (direction.SpriteArray.Length <= 0) continue;
-                
-                
+                var animationId = anim.Id;
+                var animationName = anim.Name;
+                var directions = anim.DirectionArray.Span;
+                foreach (var direction in directions)
+                {
+                    var directionId = direction.DirectionID;
+                    var directionName = direction.DirectionName;
+                    
+                    if (direction.SpriteArray.Length <= 0) continue;
+                    
+                    
+                }
             }
         }
     }
