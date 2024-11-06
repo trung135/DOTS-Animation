@@ -5,14 +5,14 @@ using UnityEngine;
 public sealed class AnimationSpriteSheet : ScriptableObject
 {
     [SerializeField] private ushort id;
-    [SerializeField] private Animation[] animationArray;
+    [SerializeField] private SpriteAnimation[] animationArray;
     
     public ushort Id => id;
-    public ReadOnlyMemory<Animation> AnimationArray => animationArray;
+    public ReadOnlyMemory<SpriteAnimation> AnimationArray => animationArray;
 }
 
 [Serializable]
-public class Animation
+public class SpriteAnimation
 {
     [SerializeField] private ushort id;
     [SerializeField] private string name;

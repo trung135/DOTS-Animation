@@ -83,12 +83,12 @@ MonoBehaviour:
     - directionID: 7
       directionName: SouthWest
       spriteArray:
-      - {fileID: -8673814844648950631, guid: f974413a323356c40abe755231fc2ea8, type: 3}
-      - {fileID: 4489248905080677822, guid: f974413a323356c40abe755231fc2ea8, type: 3}
-      - {fileID: -7579945347139096454, guid: f974413a323356c40abe755231fc2ea8, type: 3}
-      - {fileID: -1853480671019034357, guid: f974413a323356c40abe755231fc2ea8, type: 3}
       - {fileID: 619403291965536118, guid: f974413a323356c40abe755231fc2ea8, type: 3}
       - {fileID: 5318909074232033867, guid: f974413a323356c40abe755231fc2ea8, type: 3}
+      - {fileID: -7579945347139096454, guid: f974413a323356c40abe755231fc2ea8, type: 3}
+      - {fileID: -1853480671019034357, guid: f974413a323356c40abe755231fc2ea8, type: 3}
+      - {fileID: -8673814844648950631, guid: f974413a323356c40abe755231fc2ea8, type: 3}
+      - {fileID: 4489248905080677822, guid: f974413a323356c40abe755231fc2ea8, type: 3}
   - id: 1
     name: Run
     directionArray:

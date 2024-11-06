@@ -1,8 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteSheetVault : MonoBehaviour
 {
+    private static Dictionary<SpriteSheetId, SpriteAnimation> s_idToAnimation;
+    
+    public static IReadOnlyDictionary<SpriteSheetId, SpriteAnimation> IDToAnimation => s_idToAnimation;
+    
     [SerializeField] private AnimationSpriteSheet[] animationSpriteSheetArray;
     public void Awake()
     {
@@ -11,22 +16,21 @@ public class SpriteSheetVault : MonoBehaviour
         {
             if (!spriteSheet) continue;
 
-            var sheetId = spriteSheet.Id;
+            var spritesheetId = spriteSheet.Id;
             var animations = spriteSheet.AnimationArray.Span;
+
             foreach (var anim in animations)
             {
                 var animationId = anim.Id;
                 var animationName = anim.Name;
+
                 var directions = anim.DirectionArray.Span;
+
                 foreach (var direction in directions)
-                {
-                    var directionId = direction.DirectionID;
-                    var directionName = direction.DirectionName;
-                    
                     if (direction.SpriteArray.Length <= 0) continue;
-                    
-                    
-                }
+                
+                var uniqueId = new SpriteSheetId(spritesheetId, animationId);
+                //s_idToAnimation[uniqueId] = anim;
             }
         }
     }
