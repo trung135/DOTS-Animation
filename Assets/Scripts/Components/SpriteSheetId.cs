@@ -11,7 +11,6 @@ public readonly struct SpriteSheetId : IEquatable<SpriteSheetId>
     
     public SpriteSheetId(ushort spritesheetId, ushort animationId) : this()
     {
-        //_raw = (uint)(animationId | (spritesheetId << 16));
         this.animationId = animationId;
         this.spritesheetId = spritesheetId;
     }

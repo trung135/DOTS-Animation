@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SpriteSheetVault : MonoBehaviour
 {
-    private static Dictionary<SpriteSheetId, SpriteAnimation> s_idToAnimation;
+    private static Dictionary<SpriteSheetId, SpriteAnimation> s_animationDictionary;
     
-    public static IReadOnlyDictionary<SpriteSheetId, SpriteAnimation> IDToAnimation => s_idToAnimation;
+    public static IReadOnlyDictionary<SpriteSheetId, SpriteAnimation> AnimationDictionary => s_animationDictionary;
     
     [SerializeField] private AnimationSpriteSheet[] animationSpriteSheetArray;
     public void Awake()
     {
+        s_animationDictionary = new Dictionary<SpriteSheetId, SpriteAnimation>();
         var spriteSheets = animationSpriteSheetArray.AsSpan();
         foreach (var spriteSheet in spriteSheets)
         {
@@ -30,7 +31,7 @@ public class SpriteSheetVault : MonoBehaviour
                     if (direction.SpriteArray.Length <= 0) continue;
                 
                 var uniqueId = new SpriteSheetId(spritesheetId, animationId);
-                //s_idToAnimation[uniqueId] = anim;
+                s_animationDictionary[uniqueId] = anim;
             }
         }
     }
