@@ -12,12 +12,12 @@ namespace Clover
 
         protected override void OnUpdate()
         {
-            var animationDictionary = SpriteSheetVault.AnimationDictionary;
-            var count = animationDictionary.Count;
-            var vault = new NativeSpriteSheetVault
-            {
-                uniqueIdArray = new NativeArray<SpriteSheetId>(count, Allocator.Persistent)
-            };
+            // var animationDictionary = SpriteSheetVault.AnimationDictionary;
+            // var count = animationDictionary.Count;
+            // var vault = new NativeSpriteSheetVault
+            // {
+            //     uniqueIdArray = new NativeArray<SpriteSheetId>(count, Allocator.Persistent)
+            // };
         }
     }
 }

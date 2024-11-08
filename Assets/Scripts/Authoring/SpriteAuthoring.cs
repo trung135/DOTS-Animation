@@ -1,15 +1,22 @@
+using System;
+using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Clover.Authoring
+public class SpriteAuthoring : MonoBehaviour
 {
-    public class SpriteAuthoring : MonoBehaviour
+    public Sprite[] sprites;
+
+    public static Sprite[] Sprites;
+
+    private void Awake()
     {
-        private class SpriteAuthoringBaker : Baker<SpriteAuthoring>
+        Sprites = new Sprite[sprites.Length];
+        var spanSprites = sprites.AsSpan();
+        for (int i = 0; i < spanSprites.Length; i++)
         {
-            public override void Bake(SpriteAuthoring authoring)
-            {
-            }
+            Sprites[i] = spanSprites[i];
         }
     }
 }

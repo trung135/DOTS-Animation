@@ -1,17 +1,19 @@
 using Unity.Burst;
 using Unity.Entities;
+using UnityEngine;
+using Clover.Systems;
 
 namespace Systems
 {
+   
+    [UpdateAfter(typeof(SpritesAnimateSystem))]
     public partial struct SpritesRenderSystem : ISystem
     {
-        [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            
+            state.RequireForUpdate<AnimationData>();
         }
-
-        [BurstCompile]
+        
         public void OnUpdate(ref SystemState state)
         {
 
