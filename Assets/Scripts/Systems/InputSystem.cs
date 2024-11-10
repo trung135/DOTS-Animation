@@ -1,30 +1,33 @@
 using Clover;
-using Unity.Burst;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
-internal partial class InputSystem : SystemBase
+namespace Clover
 {
-    private InputManager _inputManager;
-
-    protected override void OnCreate()
+    internal partial class InputSystem : SystemBase
     {
-        _inputManager = new InputManager();
-        _inputManager.Enable();
-    }
+        private InputManager _inputManager;
 
-    protected override void OnUpdate()
-    {
-        foreach (var input in
-            SystemAPI.Query<RefRW<InputData>>())
+        protected override void OnCreate()
         {
-            input.ValueRW.move = _inputManager.Player.Move.ReadValue<Vector2>();
+            RequireForUpdate<InputData>();
+            
+            _inputManager = new InputManager();
+            _inputManager.Enable();
         }
-    }
 
-    protected override void OnDestroy()
-    {
-        _inputManager.Disable();
+        protected override void OnUpdate()
+        {
+            foreach (var input in
+                     SystemAPI.Query<RefRW<InputData>>())
+            {
+                input.ValueRW.Move = _inputManager.Player.Move.ReadValue<Vector2>();
+            }
+        }
+
+        protected override void OnDestroy()
+        {
+            _inputManager.Disable();
+        }
     }
 }

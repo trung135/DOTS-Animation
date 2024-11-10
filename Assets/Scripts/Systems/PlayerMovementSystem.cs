@@ -3,28 +3,32 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
 
-partial struct PlayerMovementSystem : ISystem
+namespace Clover
 {
-    [BurstCompile]
-    public void OnCreate(ref SystemState state)
+    partial struct PlayerMovementSystem : ISystem
     {
-        
-    }
-
-    [BurstCompile]
-    public void OnUpdate(ref SystemState state)
-    {
-        foreach (var (transform, input, speed) in 
-            SystemAPI.Query<RefRW<LocalTransform>, RefRO<InputData>, RefRO<PlayerData>>())
+        [BurstCompile]
+        public void OnCreate(ref SystemState state)
         {
-            transform.ValueRW.Position.x += input.ValueRO.move.x * speed.ValueRO.speed * SystemAPI.Time.DeltaTime;
-            transform.ValueRW.Position.y += input.ValueRO.move.y * speed.ValueRO.speed * SystemAPI.Time.DeltaTime;
+            state.RequireForUpdate<InputData>();
+            state.RequireForUpdate<MoveData>();
         }
-    }
 
-    [BurstCompile]
-    public void OnDestroy(ref SystemState state)
-    {
-        
+        [BurstCompile]
+        public void OnUpdate(ref SystemState state)
+        {
+            foreach (var (transform, input, speed) in
+                     SystemAPI.Query<RefRW<LocalTransform>, RefRO<InputData>, RefRO<MoveData>>())
+            {
+                transform.ValueRW.Position.x += input.ValueRO.Move.x * speed.ValueRO.Speed * SystemAPI.Time.DeltaTime;
+                transform.ValueRW.Position.y += input.ValueRO.Move.y * speed.ValueRO.Speed * SystemAPI.Time.DeltaTime;
+            }
+        }
+
+        [BurstCompile]
+        public void OnDestroy(ref SystemState state)
+        {
+
+        }
     }
 }
