@@ -19,7 +19,7 @@ namespace Systems
             foreach (var input in
                      SystemAPI.Query<RefRW<InputData>>())
             {
-                input.ValueRW.move = _inputManager.Player.Move.ReadValue<Vector2>();
+                input.ValueRW.Move = _inputManager.Player.Move.ReadValue<Vector2>();
             }
         }
 

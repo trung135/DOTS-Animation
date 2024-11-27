@@ -1,16 +1,45 @@
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace Clover
 {
+    public enum State
+    {
+        Idle,
+        Run
+    }
+    
+    public enum Direction
+    {
+        South,
+        SouthEast,
+        East,
+        NorthEast,
+        North,
+        NorthWest,
+        West,
+        SouthWest
+    }
+    
     public struct InputData : IComponentData
     {
-        public float2 move;
+        public float2 Move;
     }
 
-    public struct PlayerData : IComponentData
+    public struct MovementData : IComponentData
     {
-        public float speed;
+        public float Speed;
+    }
+    
+    public struct StateData : IComponentData
+    {
+        public int Value;
+    }
+
+    public struct DirectionData : IComponentData
+    {
+        public int Value;
     }
 
     // Component để lưu chỉ số sprite hiện tại
@@ -34,6 +63,7 @@ namespace Clover
     // Component để lưu thông tin sprite sheet
     public struct SpriteSheetInfo : IComponentData
     {
+        public SpriteSheetId Id;
         public int Length; // Số lượng sprites trong sprite sheet
     }
 }

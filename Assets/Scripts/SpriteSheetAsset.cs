@@ -6,21 +6,38 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SpriteSheetAsset", menuName = "New Asset/SpriteSheetAsset")]
 public class SpriteSheetAsset : ScriptableObject
 {
-    // [SerializeField] private ushort _id;
-    // [SerializeField] private SpriteSheet[] _spritesheets;
-    //
-    // public ushort Id => _id;
-    // public ReadOnlyMemory<SpriteSheet> SpriteSheets => _spritesheets;
-    //
-    // [Serializable]
-    // public class SpriteSheet
-    // {
-    //     [SerializeField] private ushort _id;
-    //     [SerializeField] private string _name;
-    //     [SerializeField] private Sprite[] _sprites;
-    //     
-    //     public ushort Id => _id;
-    //     public string Name => _name;
-    //     public ReadOnlyMemory<Sprite> Sprites => _sprites;
-    // }
+    [SerializeField] private ushort assetId;
+    [SerializeField] private string assetName;
+    [SerializeField] private Animations[] animationList;
+
+    public string AssetName => assetName;
+
+    public ushort AssetID => assetId;
+
+    public ReadOnlyMemory<Animations> AnimationList => animationList;
+
+    [Serializable]
+    public class Animations
+    {
+        [SerializeField] private ushort animId;
+        [SerializeField] private string animName;
+        [SerializeField] private Directions[] directionList;
+
+        public string AnimName => animName;
+
+        public ushort AnimID => animId;
+
+        public ReadOnlyMemory<Directions> DirectionList => directionList;
+
+        [Serializable]
+        public class Directions
+        {
+            [SerializeField] private ushort directionId;
+            [SerializeField] private Sprite[] spriteList;
+            
+            public ushort DirectionID => directionId;
+            
+            public ReadOnlyMemory<Sprite> SpriteList => spriteList;
+        }
+    }
 }

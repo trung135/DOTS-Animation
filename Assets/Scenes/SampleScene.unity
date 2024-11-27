@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteSheetAssets:
-  - {fileID: 11400000, guid: d62e9128ad9bb80489a37237ea072d9e, type: 2}
+  - {fileID: 11400000, guid: d8b2f0401c5323e44ae5e4855a2fa597, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

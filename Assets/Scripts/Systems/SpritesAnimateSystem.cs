@@ -32,8 +32,7 @@ namespace Systems
 
             state.Dependency = job.ScheduleParallel(_query, state.Dependency);
         }
-
-        [BurstCompile]
+        
         private partial struct AnimateSpriteJob : IJobEntity
         {
             public float DeltaTime;
