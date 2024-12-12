@@ -3,8 +3,10 @@ using Unity.Entities;
 using Clover;
 using UnityEngine;
 
-namespace Systems
+namespace Clover
 {
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(StateSystem))]
     public partial struct SpritesAnimateSystem : ISystem
     {
         private EntityQuery _query;

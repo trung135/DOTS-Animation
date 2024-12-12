@@ -4,11 +4,19 @@ using Unity.Mathematics;
 
 namespace Clover
 {
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(InputSystem))]
     public partial struct DirectionSystem : ISystem
     {
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
+            var query = SystemAPI.QueryBuilder()
+                .WithAllRW<DirectionData>()
+                .WithAll<InputData>()
+                .Build();
+            
+            state.RequireForUpdate(query);
         }
 
         [BurstCompile]
@@ -28,7 +36,7 @@ namespace Clover
         {
         }
         
-        public Direction GetDirection(float2 vector)
+        private Direction GetDirection(float2 vector)
         {
             // Tính góc theo radian bằng atan2
             float angle = math.atan2(vector.y, vector.x);

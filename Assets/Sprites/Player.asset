@@ -15,7 +15,7 @@ MonoBehaviour:
   assetId: 0
   assetName: Character
   animationList:
-  - animId: 1
+  - animId: 0
     animName: Idle
     directionList:
     - directionId: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
       - {fileID: -1853480671019034357, guid: f974413a323356c40abe755231fc2ea8, type: 3}
       - {fileID: -8673814844648950631, guid: f974413a323356c40abe755231fc2ea8, type: 3}
       - {fileID: 4489248905080677822, guid: f974413a323356c40abe755231fc2ea8, type: 3}
-  - animId: 2
+  - animId: 1
     animName: Run
     directionList:
     - directionId: 0

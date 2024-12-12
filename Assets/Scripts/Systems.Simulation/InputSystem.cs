@@ -1,15 +1,17 @@
-using Clover;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Systems
+namespace Clover
 {
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     internal partial class InputSystem : SystemBase
     {
         private InputManager _inputManager;
 
         protected override void OnCreate()
         {
+            RequireForUpdate<InputData>();
+            
             _inputManager = new InputManager();
             _inputManager.Enable();
         }

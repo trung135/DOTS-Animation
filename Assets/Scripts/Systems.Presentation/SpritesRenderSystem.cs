@@ -3,13 +3,19 @@ using Unity.Burst;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Systems
+namespace Clover
 {
+    [UpdateInGroup(typeof(PresentationSystemGroup))]
     public partial struct SpritesRenderSystem : ISystem
     {
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
+            var query = SystemAPI.QueryBuilder()
+                .WithAll<SpriteIndex, SpriteSheetInfo, DirectionData>()
+                .Build();
+
+            state.RequireForUpdate(query);
         }
 
         //[BurstCompile]
@@ -26,6 +32,8 @@ namespace Systems
 
                 var curDirection = direction.ValueRO.Value;
                 var curIndex = index.ValueRO.Value;
+
+                Debug.Log("Length: " + spriteSheetInfo.ValueRO.Length + ", index: " + curIndex);
 
                 SpriteRenderer renderer = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
                 renderer.sprite = animation.DirectionList.Span[curDirection].SpriteList.Span[curIndex];

@@ -1,16 +1,22 @@
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
-using Clover;
 
-namespace Systems
+namespace Clover
 {
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(InputSystem))]
     partial struct PlayerMovementSystem : ISystem
     {
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-        
+            var query = SystemAPI.QueryBuilder()
+                .WithAllRW<LocalTransform>()
+                .WithAll<InputData, MovementData>()
+                .Build();
+            
+            state.RequireForUpdate(query);
         }
 
         [BurstCompile]

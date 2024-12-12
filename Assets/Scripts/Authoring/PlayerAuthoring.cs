@@ -7,7 +7,6 @@ class PlayerAuthoring : MonoBehaviour
 {
     public float speed;
     public float spriteInterval;
-    public int spriteCount;
     public ushort assetID;
     public ushort animationID;
 }
@@ -17,6 +16,10 @@ class PlayerBaker : Baker<PlayerAuthoring>
     public override void Bake(PlayerAuthoring authoring)
     {
         var entity = GetEntity(TransformUsageFlags.Dynamic);
+        AddComponent(entity, new AssetData
+        {
+            Value = authoring.assetID
+        });
         AddComponent(entity, new MovementData 
         {
             Speed = authoring.speed 
@@ -32,8 +35,8 @@ class PlayerBaker : Baker<PlayerAuthoring>
         });
         AddComponent(entity, new SpriteSheetInfo
         {
-            Id = new SpriteSheetId(authoring.assetID, authoring.animationID),
-            Length = authoring.spriteCount
+            Id = new AssetAnimId(authoring.assetID, authoring.animationID),
+            Length = 1
         });
     }
 }

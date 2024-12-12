@@ -21,6 +21,11 @@ namespace Clover
         West,
         SouthWest
     }
+
+    public struct AssetData : IComponentData
+    {
+        public ushort Value;
+    }
     
     public struct InputData : IComponentData
     {
@@ -63,7 +68,7 @@ namespace Clover
     // Component để lưu thông tin sprite sheet
     public struct SpriteSheetInfo : IComponentData
     {
-        public SpriteSheetId Id;
+        public AssetAnimId Id;
         public int Length; // Số lượng sprites trong sprite sheet
     }
 }
