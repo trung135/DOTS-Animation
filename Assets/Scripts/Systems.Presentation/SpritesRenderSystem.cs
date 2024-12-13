@@ -1,6 +1,7 @@
 using Clover;
 using Unity.Burst;
 using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 
 namespace Clover
@@ -32,8 +33,6 @@ namespace Clover
 
                 var curDirection = direction.ValueRO.Value;
                 var curIndex = index.ValueRO.Value;
-
-                Debug.Log("Length: " + spriteSheetInfo.ValueRO.Length + ", index: " + curIndex);
 
                 SpriteRenderer renderer = state.EntityManager.GetComponentObject<SpriteRenderer>(entity);
                 renderer.sprite = animation.DirectionList.Span[curDirection].SpriteList.Span[curIndex];

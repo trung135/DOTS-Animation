@@ -16,6 +16,7 @@ class PlayerBaker : Baker<PlayerAuthoring>
     public override void Bake(PlayerAuthoring authoring)
     {
         var entity = GetEntity(TransformUsageFlags.Dynamic);
+        AddComponent<PlayerTag>(entity);
         AddComponent(entity, new AssetData
         {
             Value = authoring.assetID
